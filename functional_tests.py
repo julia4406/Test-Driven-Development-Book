@@ -16,6 +16,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.browser.quit()
 
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element(By.ID, 'id_list_table')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
+        self.assertIn(row_text, [row.text for row in rows])
+
     def test_can_start_a_list_and_get_it_later(self):
         # New web-app with an urgent to-do list
         # Let's see on home-page
@@ -33,6 +38,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('Buy peacock feathers')  # Type in text-field "Buy peacock feathers"
         inputbox.send_keys(Keys.ENTER) # Press Enter
         time.sleep(1) # Page reload and appear new element in list: '1. Buy peacock feathers'
+        self.check_for_row_in_list_table('1. Buy peacock feathers')
 
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
@@ -46,6 +52,9 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('Make a fishing fly with peacock feathers.')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
+
+        self.check_for_row_in_list_table('1. Buy peacock feathers')
+        self.check_for_row_in_list_table('2. Make a fishing fly with peacock feathers.')
 
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
