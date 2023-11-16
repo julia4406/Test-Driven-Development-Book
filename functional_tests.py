@@ -30,28 +30,29 @@ class NewVisitorTest(unittest.TestCase):
         # suggestion to add an item to the list
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
         self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
+        inputbox.send_keys('Buy peacock feathers')  # Type in text-field "Buy peacock feathers"
+        inputbox.send_keys(Keys.ENTER) # Press Enter
+        time.sleep(1) # Page reload and appear new element in list: '1. Buy peacock feathers'
 
-        # Type in text-field "Buy peacock feathers"
-        inputbox.send_keys('Buy peacock feathers')
+        table = self.browser.find_element(By.ID, 'id_list_table')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
+        self.assertIn('1. Buy peacock feathers', [row.text for row in rows])
 
-        # Press Enter
-        # Page reload and appear new element in list: '1. Buy peacock feathers'
+
+        # Text field suggest adding a new element
+        # Type in text-field "Make a fishing fly with peacock feathers."
+        # And press Enter
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox.send_keys('Make a fishing fly with peacock feathers.')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
-        self.assertTrue(any(row.text == '1. Buy peacock feathers' for row in rows), "New element "
-                                                                                    "didn't "
-                                                                                    "appear in the table")
+        self.assertIn('1. Buy peacock feathers', [row.text for row in rows])
+        self.assertIn('2. Make a fishing fly with peacock feathers.', [row.text for row in rows])
 
 
-
-        # Text field suggest adding a new element
-
-        # Type in text-field "Make a fishing fly with peacock feathers."
-
-        # Press Enter
 
         self.fail('Finish test!')
 
