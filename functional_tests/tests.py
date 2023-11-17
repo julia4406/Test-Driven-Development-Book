@@ -1,13 +1,12 @@
+from django.test import LiveServerTestCase
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 import time
-import unittest
 
-
-
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     # A new user test, class based on Unittest
 
     def setUp(self):
@@ -24,7 +23,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_get_it_later(self):
         # New web-app with an urgent to-do list
         # Let's see on home-page
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # there is title and head on page talk to us about
         # urgent to-do lists
@@ -72,5 +71,3 @@ class NewVisitorTest(unittest.TestCase):
         # Visit this URL and see your To-Do list there
 
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
