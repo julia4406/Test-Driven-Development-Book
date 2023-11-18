@@ -70,7 +70,39 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn('1. Buy peacock feathers', [row.text for row in rows])
         self.assertIn('2. Make a fishing fly with peacock feathers.', [row.text for row in rows])
 
+    def test_multiple_users_can_start_lists_at_different_urls(self):
+        # start a new list
+        self.browser.get(self.live_server_url)
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox.send_keys('Buy peacock feathers')  # Type in text-field "Buy peacock feathers"
+        inputbox.send_keys(Keys.ENTER) # Press Enter
+        # Page reload and appear new element in list: '1. Buy peacock feathers'
+        self.wait_for_row_in_list_table('1. Buy peacock feathers')
 
+        user1_list_url = self.browser.current_url
+        self.assertRegex(user1_list_url, '/lists/.+')
+
+        # adding new user
+        self.browser.quit()
+        self.browser = webdriver.Firefox()
+        self.browser.get(self.live_server_url)
+        page_text = self.browser.find_element(By.TAG_NAME, 'body').text
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertNotIn('Make a fishing fly with peacock feathers.', page_text)
+
+        # new user starts new list
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox.send_keys('Buy milk')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1. Buy milk')
+
+        user2_list_url = self.browser.current_url   # user2 got new url-addr
+        self.assertRegex(user2_list_url, '/lists/.+')
+        self.assertNotEqual(user2_list_url, user1_list_url)
+
+        page_text = self.browser.find_element(By.TAG_NAME, 'body').text
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertIn('Buy milk', page_text)
 
         self.fail('Finish test!')
 
