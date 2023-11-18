@@ -9,11 +9,6 @@ from lists.models import Item
 
 class HomePageTest(TestCase):
 
-    def test_root_url_resolves_to_home_page_view(self):
-        # url стає домашньою сторінкою
-        found = resolve('/')
-        self.assertEqual(found.func, home_page)
-
     def test_home_page_returns_correct_html(self):
         '''тест: використовується домашній шаблон'''
         response = self.client.get('/') #викликаєм client.get, та передаємо url для тестування
@@ -33,24 +28,12 @@ class HomePageTest(TestCase):
         ''' тест: переадресація після post-запроса'''
         response = self.client.post('/', data={'item_text': 'A new list item'})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/')
+        self.assertEqual(response['location'], '/lists/unique_personal_list')
 
     def test_only_saves_items_when_necessary(self):
         # тест: зберігає елементи тільки за потреби
         self.client.get('/')
         self.assertEqual(Item.objects.count(), 0)
-
-    def test_displays_all_list_items(self):
-        ''' тест: відображуються всі елементи списка'''
-        Item.objects.create(text='sprava 1')
-        Item.objects.create(text='sprava 2')
-
-        response = self.client.get('/')
-
-        self.assertIn('sprava 1', response.content.decode())
-        self.assertIn('sprava 2', response.content.decode())
-
-
 
 class ItemModelTest(TestCase):
     # клас для тестування моделі елемента списку
@@ -74,6 +57,17 @@ class ItemModelTest(TestCase):
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(second_saved_item.text, 'The second item')
 
+class ListViewTest(TestCase):
+    '''Тест відображення списку'''
+    def test_displays_all_list_items(self):
+        ''' тест: відображуються всі елементи списка'''
+        Item.objects.create(text='sprava 1')
+        Item.objects.create(text='sprava 2')
+
+        response = self.client.get('/lists/unique_personal_list')
+
+        self.assertContains(response, 'sprava 1')
+        self.assertContains(response, 'sprava 2')
 
 
 
