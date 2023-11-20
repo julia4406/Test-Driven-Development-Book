@@ -16,13 +16,13 @@ Including another URLconf
 """
 #from django.contrib import admin
 
-from django.urls import path, re_path
+from django.urls import path
 from lists import views
 
 
 urlpatterns = [
-    re_path('', views.home_page, name='home'),
-    re_path(r'^lists/unique_personal_list/$',
+    path('', views.home_page, name='home'),
+    path('lists/unique_personal_list/',
          views.view_list, name='view_list'),
 ]
 

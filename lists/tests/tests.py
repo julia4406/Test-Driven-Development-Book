@@ -4,7 +4,7 @@ from django.urls import resolve
 from django.http import HttpRequest
 from django.template.loader import render_to_string
 
-from lists.views import home_page
+from lists.views import home_page, view_list
 from lists.models import Item
 
 class HomePageTest(TestCase):
@@ -28,7 +28,7 @@ class HomePageTest(TestCase):
         ''' тест: переадресація після post-запроса'''
         response = self.client.post('/', data={'item_text': 'A new list item'})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/lists/unique_personal_list')
+        self.assertEqual(response['location'], '/lists/unique_personal_list/')
 
     def test_only_saves_items_when_necessary(self):
         # тест: зберігає елементи тільки за потреби
@@ -59,12 +59,18 @@ class ItemModelTest(TestCase):
 
 class ListViewTest(TestCase):
     '''Тест відображення списку'''
+
+    def test_uses_list_template(self):
+        ''' тест: є шаблон-сторінка list.html'''
+        response = self.client.get('/lists/unique_personal_list/')
+        self.assertTemplateUsed(response, 'list.html')
+
     def test_displays_all_list_items(self):
         ''' тест: відображуються всі елементи списка'''
         Item.objects.create(text='sprava 1')
         Item.objects.create(text='sprava 2')
 
-        response = self.client.get('/lists/unique_personal_list')
+        response = self.client.get('/lists/unique_personal_list/')
 
         self.assertContains(response, 'sprava 1')
         self.assertContains(response, 'sprava 2')
