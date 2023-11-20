@@ -14,27 +14,6 @@ class HomePageTest(TestCase):
         response = self.client.get('/') #викликаєм client.get, та передаємо url для тестування
         self.assertTemplateUsed(response, 'home.html') #перевіряє який html-шаблон використовується
 
-    def test_can_save_a_POST_request(self):
-        ''' тест: зберігаємо post-запрос'''
-        self.client.post('/', data={'item_text': 'A new list item'})
-
-        # наступні 3 строки- представление має зберігати новий елемент в БД, а не передавати його
-        # у відповідний відгук
-        self.assertEqual(Item.objects.count(), 1) # Впевнюємось що новий об'єкт Item збережено в БД
-        new_item = Item.objects.first()
-        self.assertEqual(new_item.text, 'A new list item') # перевіряємо текст документа
-
-    def test_redirects_after_POST(self):
-        ''' тест: переадресація після post-запроса'''
-        response = self.client.post('/', data={'item_text': 'A new list item'})
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/lists/unique_personal_list/')
-
-    def test_only_saves_items_when_necessary(self):
-        # тест: зберігає елементи тільки за потреби
-        self.client.get('/')
-        self.assertEqual(Item.objects.count(), 0)
-
 class ItemModelTest(TestCase):
     # клас для тестування моделі елемента списку
     # створення нового запису в базі даних
@@ -74,6 +53,22 @@ class ListViewTest(TestCase):
 
         self.assertContains(response, 'sprava 1')
         self.assertContains(response, 'sprava 2')
+
+class NewListTest(TestCase):
+    '''тестовий клас для створення нового списку'''
+
+    def test_can_save_a_POST_request(self):
+        ''' тест: зберігаємо post-запрос'''
+        self.client.post('/lists/new', data={'item_text': 'A new list item'})
+        self.assertEqual(Item.objects.count(), 1)  # Впевнюємось що новий об'єкт Item збережено в БД
+        new_item = Item.objects.first()
+        self.assertEqual(new_item.text, 'A new list item')  # перевіряємо текст документа
+
+    def test_redirects_after_POST(self):
+        ''' тест: переадресація після post-запроса'''
+        response = self.client.post('/lists/new', data={'item_text': 'A new list item'})
+        self.assertRedirects(response, '/lists/unique_personal_list/')
+
 
 
 
