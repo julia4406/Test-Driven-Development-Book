@@ -15,13 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #from django.contrib import admin
-# URL- addresses які вживаються по всьому сайту
-from django.urls import re_path, include
-from lists import views as list_views
-from lists import urls as list_urls
+# URL-addresses які використовуються тільки в lists
+from django.urls import re_path
+from lists import views
 
 urlpatterns = [
-    re_path(r'^$', list_views.home_page, name='home'),
-    re_path(r'^lists/', include(list_urls)),
+    re_path(r'^new$', views.new_list, name='new_list'),
+    re_path(r'^(\d+)/$', views.view_list, name='view_list'),
+    re_path(r'^(\d+)/add_item$', views.add_item, name='add_item'),
 ]
 
