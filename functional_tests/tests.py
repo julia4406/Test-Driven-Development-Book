@@ -103,12 +103,23 @@ class NewVisitorTest(LiveServerTestCase):
         page_text = self.browser.find_element(By.TAG_NAME, 'body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
-
-
         # Page reload and appeared 2 elements in list.
-
         # You have to see the message with unique URL with explanations in use
-
         # Visit this URL and see your To-Do list there
 
+    def test_layout_and_styling(self):
+        ''' тестуємо макет та стильове оформлення'''
+        # user open home-page
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024, 768)
 
+        # the input-form-fild is centered
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=10)
+
+        # start new list, the input-form-fild is centered there too
+        inputbox.send_keys('testing')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1. testing')
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=10)
