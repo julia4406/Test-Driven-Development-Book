@@ -1,4 +1,4 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -9,13 +9,14 @@ import time
 
 MAX_WAIT = 10
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
     # A new user test, class based on Unittest
 
     def setUp(self):
         self.browser = webdriver.Firefox()
 
     def tearDown(self) -> None:
+        #self.browser.refresh()
         self.browser.quit()
 
     def wait_for_row_in_list_table(self, row_text):
@@ -115,11 +116,14 @@ class NewVisitorTest(LiveServerTestCase):
 
         # the input-form-fild is centered
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
-        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=10)
+        self.assertAlmostEqual(inputbox.location['x'] +
+                               inputbox.size['width'] / 2, 512, delta=10)
 
         # start new list, the input-form-fild is centered there too
         inputbox.send_keys('testing')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1. testing')
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
-        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=10)
+        self.assertAlmostEqual(inputbox.location['x'] +
+                               inputbox.size['width'] / 2, 512, delta=10)
+
