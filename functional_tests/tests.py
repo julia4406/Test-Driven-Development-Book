@@ -1,3 +1,6 @@
+# superlists-staging.perscloud.pp.ua
+# superlists.perscloud.pp.ua
+
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver
