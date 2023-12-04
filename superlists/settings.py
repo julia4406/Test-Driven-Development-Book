@@ -1,3 +1,9 @@
+
+# superlists-staging.perscloud.pp.ua
+# superlists.perscloud.pp.ua
+
+# https://github.com/julia4406/Test-Driven-Development-Book.git
+
 """
 Django settings for superlists project.
 
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'lists'
 ]
 
@@ -48,6 +55,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://superlists-staging.perscloud.pp.ua",
+    "http://superlists.perscloud.pp.ua",
 ]
 
 ROOT_URLCONF = 'superlists.urls'
