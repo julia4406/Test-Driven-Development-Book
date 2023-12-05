@@ -29,15 +29,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "http://superlists-staging.perscloud.pp.ua",
+    "http://superlists.perscloud.pp.ua",]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://superlists-staging.perscloud.pp.ua",
+    "http://superlists.perscloud.pp.ua",
+]
 
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -56,11 +62,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://superlists-staging.perscloud.pp.ua",
-    "http://superlists.perscloud.pp.ua",
 ]
 
 ROOT_URLCONF = 'superlists.urls'
