@@ -32,24 +32,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+#DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [
     "superlists-staging.perscloud.pp.ua",
     "superlists.perscloud.pp.ua",
     'localhost',
     '127.0.0.1',
-#    '172.105.148.122',
 ]
 CSRF_TRUSTED_ORIGINS = ["http://superlists-staging.perscloud.pp.ua",
     "http://superlists.perscloud.pp.ua",
-#    '172.105.148.122',
                         ]
 CORS_ALLOWED_ORIGINS = [
     "http://superlists-staging.perscloud.pp.ua",
     "http://superlists.perscloud.pp.ua",
-#    '172.105.148.122',
 ]
 
 # Application definition
