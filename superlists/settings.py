@@ -40,13 +40,17 @@ ALLOWED_HOSTS = [
     "http://superlists.perscloud.pp.ua",
     'localhost',
     '127.0.0.1',
+    '172.105.148.122',
 ]
 CSRF_TRUSTED_ORIGINS = ["http://superlists-staging.perscloud.pp.ua",
-    "http://superlists.perscloud.pp.ua",]
+    "http://superlists.perscloud.pp.ua",
+    '172.105.148.122',
+                        ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://superlists-staging.perscloud.pp.ua",
     "http://superlists.perscloud.pp.ua",
+    '172.105.148.122',
 ]
 
 # Application definition
