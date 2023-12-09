@@ -3410,3 +3410,45 @@ DevTools listening on ws://127.0.0.1:62740/devtools/browser/f46b14f1-d2b9-4d1b-9
 JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
 1702129943639	Marionette	INFO	Stopped listening on port 62747
 Dynamically enable window occlusion 1
+1702130399682	geckodriver	INFO	Listening on 127.0.0.1:62932
+1702130402706	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62933" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\YA\\AppData\\Local\\Temp\\rust_mozprofilejny6i7"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702130403058	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1702130403139	Marionette	INFO	Listening on port 62940
+WebDriver BiDi listening on ws://127.0.0.1:62933
+Read port: 62940
+1702130403351	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:62933/devtools/browser/7000acd1-3e3e-4c80-a89e-bf4025eb187d
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+1702130405529	Marionette	INFO	Stopped listening on port 62940
+Dynamically enable window occlusion 1
+1702130409144	geckodriver	INFO	Listening on 127.0.0.1:62962
+1702130412199	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62963" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\YA\\AppData\\Local\\Temp\\rust_mozprofile7BSWd0"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702130414403	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1702130414866	Marionette	INFO	Listening on port 62970
+WebDriver BiDi listening on ws://127.0.0.1:62963
+Read port: 62970
+1702130415855	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:62963/devtools/browser/4659e8f1-4041-4554-b0f5-e609ad6a797c
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+1702130422586	Marionette	INFO	Stopped listening on port 62970
+Dynamically enable window occlusion 1
+1702130427623	geckodriver	INFO	Listening on 127.0.0.1:62995
+1702130430645	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62996" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\YA\\AppData\\Local\\Temp\\rust_mozprofileSoq6Q5"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702130431418	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1702130431588	Marionette	INFO	Listening on port 63003
+WebDriver BiDi listening on ws://127.0.0.1:62996
+Read port: 63003
+1702130432053	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:62996/devtools/browser/07318431-9609-4b75-a2e6-7e10cb94f251
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+1702130436565	Marionette	INFO	Stopped listening on port 63003
+Dynamically enable window occlusion 1
