@@ -3,6 +3,7 @@ Provision work of a new site
 ## Requirements
 * nginx
 * Python 3.10
+* gunicorn
 * virtualenv + pip
 * Git
 

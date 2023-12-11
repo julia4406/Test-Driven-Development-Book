@@ -1,5 +1,6 @@
 # superlists-staging.perscloud.pp.ua
 # superlists.perscloud.pp.ua
+# https://github.com/julia4406/Test-Driven-Development-Book.git
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 

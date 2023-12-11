@@ -3,8 +3,9 @@ Description=Gunicorn server for SITENAME
 
 [Service]
 Restart=on-failure
-User=Ja
+User=ja
 WorkingDirectory=/home/ja/sites/SITENAME/source
+EnvironmentFile=/home/ja/sites/SITENAME/source
 ExecStart=/home/ja/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket
 superlists.wsgi:application
 
