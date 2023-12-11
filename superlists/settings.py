@@ -9,14 +9,6 @@ import os.path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
 if 'DJANGO_DEBUG_FALSE' in os.environ:
     DEBUG = False
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
@@ -26,22 +18,6 @@ else:
     SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
     ALLOWED_HOSTS = []
 
-'''
-ALLOWED_HOSTS = [
-    "superlists-staging.perscloud.pp.ua",
-    "superlists.perscloud.pp.ua",
-    'localhost',
-    '127.0.0.1',
-    ]
-
-CSRF_TRUSTED_ORIGINS = ["http://superlists-staging.perscloud.pp.ua",
-    "http://superlists.perscloud.pp.ua",
-                        ]
-CORS_ALLOWED_ORIGINS = [
-    "http://superlists-staging.perscloud.pp.ua",
-    "http://superlists.perscloud.pp.ua",
-]
-'''
 
 # Application definition
 
