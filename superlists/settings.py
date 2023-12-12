@@ -8,8 +8,11 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEBUG = True
+SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
+ALLOWED_HOSTS = ['*']
 
-
+'''
 if 'DJANGO_DEBUG_FALSE' in os.environ:
     DEBUG = False
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
@@ -18,7 +21,7 @@ else:
     DEBUG = True
     SECRET_KEY = 'django-insecure-0uur_=4d!d!o@v%$7l%319j)!!uxfpy8r$#@8-jp)5%=c78m-f'
     ALLOWED_HOSTS = []
-
+'''
 
 # Application definition
 
