@@ -1,0 +1,67 @@
+How I made deploying step-by-step:
+
+00.  Make sure that our functional_tests have possibility to be run on site instead a local server.
+in setUp def:
+        staging_server = os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url = 'http://' + staging_server
+
+0. Get the domain name for site, choose your server (my was on Linode), setup SSH.
+
+1. Installing Pythond
+    ja@server:$ sudo apt update
+    ja@server:$ sudo apt install python3 python3-venv
+
+2. Installing Git and clone your local data:
+    ja@server:$ sudo apt install git
+    ja@server:$ export SITENAME=URL_for_your_repo (my was superlists-staging.perscloud.pp.ua)
+    ja@server:$ git clone github_link ~/sites/$SITENAME (my link https://github
+    .com/julia4406/Test-Driven-Development-Book.git)
+
+    ja:$ cd ~/sites/$SITENAME
+
+3.Creating a Virtualenv on the Server. Installing Django.
+    ja@server:$ pwd
+    (present working directory should be /home/ja/sites/superlists-staging.perscloud
+    .pp.ua)
+
+    ja@server:$ python -m venv virtualenv
+    ja@server:$ ./.venv/bin/pip install -r requirements.txt
+
+4. Creating the Database with migrate. And restart server.
+    ja@server:$ ./.venv/bin/python manage.py migrate --noinput
+    ja@server:$ ./.venv/bin/python manage.py runserver
+
+5. Installing Nginx and configuring server (nginx.template.conf file)
+    ja@server:$ sudo apt install nginx
+    ja@server:$ sudo systemctl start nginx
+
+    -After configuring file (my was /etc/nginx/sites-available/superlists-staging.perscloud.pp.ua)
+    -We add it to the enabled sites for the server by creating a symlink to it
+    # reset our env var (if necessary)
+    ja@server:$ export SITENAME=superlists-staging.perscloud.pp.ua
+
+    ja@server:$ cd /etc/nginx/sites-enabled/
+    ja@server:$ sudo ln -s /etc/nginx/sites-available/$SITENAME $SITENAME
+
+    # check our symlink has worked:
+    ja@server:$ readlink -f $SITENAME
+        /etc/nginx/sites-available/superlists-staging.perscloud.pp.ua
+
+    ja@server:$ sudo rm /etc/nginx/sites-enabled/default
+
+    ja@server:$ sudo systemctl reload nginx
+    ja@server:$ cd ~/sites/$SITENAME
+    ja@server:$ ./.venv/bin/python manage.py runserver
+
+6. Installing gunicorn.
+    ja@server:$ ./.venv/bin/pip install gunicorn
+
+7. Getting Nginx to Serve Static Files, switching to using sockets and starting gunicorn.
+    ja@server:$ ./.venv/bin/python manage.py collectstatic --noinput
+    ja@server:$ sudo systemctl reload nginx
+    ja@server:$ ./.venv/bin/gunicorn --bind \
+        unix:/tmp/superlists-staging.perscloud.pp.ua.socket superlists.wsgi:application
+
+8.
+
