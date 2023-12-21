@@ -2,6 +2,9 @@
 # superlists.perscloud.pp.ua
 # https://github.com/julia4406/Test-Driven-Development-Book.git
 
+# running tests in git bash:
+# $ STAGING_SERVER=superlists-staging.perscloud.pp.ua ./manage.py test functional_tests.tests --failfast
+
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver

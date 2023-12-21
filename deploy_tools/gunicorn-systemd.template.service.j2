@@ -1,13 +1,15 @@
 [Unit]
-Description=Gunicorn server for SITENAME
+Description=Gunicorn server for superlists-staging.perscloud.pp.ua
 
 [Service]
 Restart=on-failure
 User=ja
-WorkingDirectory=/home/ja/sites/SITENAME/source
-EnvironmentFile=/home/ja/sites/SITENAME/source
-ExecStart=/home/ja/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket
-superlists.wsgi:application
+WorkingDirectory=/home/ja/sites/superlists-staging.perscloud.pp.ua
+EnviromentFile=/home/ja/sites/superlists-staging.perscloud.pp.ua/.env
+
+ExecStart=/home/ja/sites/superlists-staging.perscloud.pp.ua/.venv/bin/gunicorn \
+        --bind unix:/tmp/superlists-staging.perscloud.pp.ua.socket \
+        superlists.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

@@ -1,3 +1,36 @@
+
+Thinking About Automating
+Provisioning
+
+ 1       Assume we have a user account and home folder
+
+ 2       add-apt-repository ppa:deadsnakes/ppa && apt update
+
+3        apt install nginx git python3.7 python3.7-venv
+
+4        Add Nginx config for virtual host
+
+5        Add Systemd job for Gunicorn (including unique SECRET_KEY)
+
+Deployment
+
+1        Create directory in ~/sites
+
+2        Pull down source code
+
+3        Start virtualenv in virtualenv
+
+4        pip install -r requirements.txt
+
+5        manage.py migrate for database
+
+6        collectstatic for static files
+
+7        Restart Gunicorn job
+
+8        Run FTs to check everything works
+
+
 How I made deploying step-by-step:
 
 00.  Make sure that our functional_tests have possibility to be run on site instead a local server.
@@ -8,29 +41,28 @@ in setUp def:
 
 0. Get the domain name for site, choose your server (my was on Linode), setup SSH.
 
-1. Installing Pythond
+1. Installing Python
     ja@server:$ sudo apt update
-    ja@server:$ sudo apt install python3 python3-venv
+    ja@server:$ sudo apt install python3.10 python3.10-venv
 
 2. Installing Git and clone your local data:
     ja@server:$ sudo apt install git
-    ja@server:$ export SITENAME=URL_for_your_repo (my was superlists-staging.perscloud.pp.ua)
-    ja@server:$ git clone github_link ~/sites/$SITENAME (my link https://github
-    .com/julia4406/Test-Driven-Development-Book.git)
+    ja@server:$ export SITENAME=URL_for_your_repo
+    ja@server:$ git clone github_link ~/sites/$SITENAME
 
-    ja:$ cd ~/sites/$SITENAME
+    ja@server:$ cd ~/sites/$SITENAME
 
 3.Creating a Virtualenv on the Server. Installing Django.
     ja@server:$ pwd
     (present working directory should be /home/ja/sites/superlists-staging.perscloud
     .pp.ua)
 
-    ja@server:$ python -m venv virtualenv
-    ja@server:$ ./.venv/bin/pip install -r requirements.txt
+    ja@server:$ python3 -m venv venv
+    ja@server:$ ./venv/bin/pip install -r requirements.txt
 
 4. Creating the Database with migrate. And restart server.
-    ja@server:$ ./.venv/bin/python manage.py migrate --noinput
-    ja@server:$ ./.venv/bin/python manage.py runserver
+    ja@server:$ ./venv/bin/python manage.py migrate --noinput
+    ja@server:$ ./venv/bin/python manage.py runserver
 
 5. Installing Nginx and configuring server (nginx.template.conf file)
     ja@server:$ sudo apt install nginx
@@ -52,16 +84,34 @@ in setUp def:
 
     ja@server:$ sudo systemctl reload nginx
     ja@server:$ cd ~/sites/$SITENAME
-    ja@server:$ ./.venv/bin/python manage.py runserver
+    ja@server:$ ./venv/bin/python manage.py runserver
 
 6. Installing gunicorn.
-    ja@server:$ ./.venv/bin/pip install gunicorn
+    ja@server:$ ./venv/bin/pip install gunicorn
 
 7. Getting Nginx to Serve Static Files, switching to using sockets and starting gunicorn.
-    ja@server:$ ./.venv/bin/python manage.py collectstatic --noinput
+    ja@server:$ ./venv/bin/python manage.py collectstatic --noinput
     ja@server:$ sudo systemctl reload nginx
-    ja@server:$ ./.venv/bin/gunicorn --bind \
+    ja@server:$ ./venv/bin/gunicorn --bind \
         unix:/tmp/superlists-staging.perscloud.pp.ua.socket superlists.wsgi:application
 
-8.
+8. Using .env file to Store Environment Variables
+    ja@server:$ pwd (my was ja@localhost:~/sites/superlists-staging.perscloud.pp.ua)
+    ja@server:$ echo DJANGO_DEBUG_FALSE=y >> .env
+    ja@server:$ echo SITENAME=$SITENAME >>.env
+    ja@server:$ echo DJANGO_SECRET_KEY=$(python3.10 -c"import random; print(''.join(random.SystemRandom().choices
+        ('abcdefghijklmnopqrstuvwxyz0123456789', k=50)))") >> .env
+    ja@server:$ cat .env
+
+
+
+
+
+
+
+
+
+
+
+
 
