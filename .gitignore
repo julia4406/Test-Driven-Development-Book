@@ -1,4 +1,6 @@
-db.sqlite3 
+db.sqlite3
+superlists/__pycache__/settings.cpython-310.pyc
+
 __pycache__
 *.pyc
 test_learning_testing.py

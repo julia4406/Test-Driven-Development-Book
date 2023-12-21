@@ -101,7 +101,13 @@ in setUp def:
     ja@server:$ echo SITENAME=$SITENAME >>.env
     ja@server:$ echo DJANGO_SECRET_KEY=$(python3.10 -c"import random; print(''.join(random.SystemRandom().choices
         ('abcdefghijklmnopqrstuvwxyz0123456789', k=50)))") >> .env
+    
+9. Check .env file and restart gunicorn
     ja@server:$ cat .env
+    ja@server:$ ./venv/bin/gunicorn --bind \
+        unix:/tmp/$SITENAME.socket superlists.wsgi:application
+
+
 
 
 
