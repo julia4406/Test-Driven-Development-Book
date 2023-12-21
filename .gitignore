@@ -116,6 +116,8 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv_linux/
+venv_windows/
 /static/
 /media/
 ENV/

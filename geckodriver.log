@@ -3902,3 +3902,73 @@ Read port: 64234
 DevTools listening on ws://127.0.0.1:64225/devtools/browser/673c2165-15fb-4287-8206-42ea50949fbd
 1702392807624	Marionette	INFO	Stopped listening on port 64234
 Dynamically enable window occlusion 1
+1703165645112	geckodriver	INFO	Listening on 127.0.0.1:38549
+1703165646363	geckodriver	INFO	Listening on 127.0.0.1:52235
+1703165647579	geckodriver	INFO	Listening on 127.0.0.1:50311
+2023/12/21 13:54:23.986940 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+/home/julia/snap/firefox/3600/Desktop was removed, reassigning DESKTOP to homedir
+/home/julia/snap/firefox/3600/Downloads was removed, reassigning DOWNLOAD to homedir
+/home/julia/snap/firefox/3600/Templates was removed, reassigning TEMPLATES to homedir
+/home/julia/snap/firefox/3600/Public was removed, reassigning PUBLICSHARE to homedir
+/home/julia/snap/firefox/3600/Documents was removed, reassigning DOCUMENTS to homedir
+/home/julia/snap/firefox/3600/Music was removed, reassigning MUSIC to homedir
+/home/julia/snap/firefox/3600/Pictures was removed, reassigning PICTURES to homedir
+/home/julia/snap/firefox/3600/Videos was removed, reassigning VIDEOS to homedir
+1703166864168	geckodriver	INFO	Listening on 127.0.0.1:48609
+1703166864505	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/sna ... te" "--remote-debugging-port" "52623" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilemJcfiB"
+[70746, Main Thread] WARNING: Settings portal not found: Could not connect: No such file or directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:70746): Gdk-WARNING **: 13:54:24.560: Settings portal not found: Could not connect: No such file or directory
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[Parent 70746, Main Thread] WARNING: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:70746): IBUS-WARNING **: 13:54:25.109: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory
+1703166865227	Marionette	INFO	Marionette enabled
+1703166865307	Marionette	INFO	Listening on port 36499
+WebDriver BiDi listening on ws://127.0.0.1:52623
+Read port: 36499
+1703166865546	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52623/devtools/browser/729ba9d3-2617-408e-ae45-44e42b215319
+console.warn: LoginRecipes: "Falling back to a synchronous message for: http://superlists-staging.perscloud.pp.ua."
+1703166878414	Marionette	INFO	Stopped listening on port 36499
+2023/12/21 13:54:39.386002 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1703166879522	geckodriver	INFO	Listening on 127.0.0.1:44747
+1703166879900	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/sna ... te" "--remote-debugging-port" "54763" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile7yBxm2"
+[71204, Main Thread] WARNING: Settings portal not found: Could not connect: No such file or directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:71204): Gdk-WARNING **: 13:54:39.953: Settings portal not found: Could not connect: No such file or directory
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[Parent 71204, Main Thread] WARNING: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:71204): IBUS-WARNING **: 13:54:40.479: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory
+1703166880588	Marionette	INFO	Marionette enabled
+1703166880666	Marionette	INFO	Listening on port 37439
+WebDriver BiDi listening on ws://127.0.0.1:54763
+Read port: 37439
+1703166880938	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:54763/devtools/browser/2f8a0920-f1b4-4772-adea-db1bc460cdfc
+1703166883227	Marionette	INFO	Stopped listening on port 37439
+2023/12/21 13:54:44.133802 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1703166884281	geckodriver	INFO	Listening on 127.0.0.1:51165
+1703166884651	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/sna ... te" "--remote-debugging-port" "59699" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileTabAsx"
+[71574, Main Thread] WARNING: Settings portal not found: Could not connect: No such file or directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:71574): Gdk-WARNING **: 13:54:44.701: Settings portal not found: Could not connect: No such file or directory
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[Parent 71574, Main Thread] WARNING: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:187
+
+(firefox:71574): IBUS-WARNING **: 13:54:45.265: Failed to mkdir /home/julia/snap/firefox/3600/.config/ibus/bus: Not a directory
+1703166885381	Marionette	INFO	Marionette enabled
+1703166885461	Marionette	INFO	Listening on port 38049
+WebDriver BiDi listening on ws://127.0.0.1:59699
+Read port: 38049
+1703166885683	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:59699/devtools/browser/1bfb6022-efdb-47fe-b7ba-4358243066ed
+console.warn: LoginRecipes: "Falling back to a synchronous message for: http://superlists-staging.perscloud.pp.ua."
+1703166898229	Marionette	INFO	Stopped listening on port 38049
